@@ -1,0 +1,375 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>昊哥的NP1500私房菜</title>
+  <meta name="Generator" content="EditPlus">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+ </head>
+ <body>
+  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+  昊哥的NP1500私房菜<br>
+  <br>
+  2012-02-26<br><br>
+  第四讲 - 特殊字符及其使用<br>
+  <br>
+  <br>
+  <br>
+  本章讲 在脚本或其他别的地方出现的特殊字符以及它们的使用方法.<br>
+  <br>
+  ******************************<br>
+  <br>
+  第一个:#.<br>
+  #在脚本中是注释的意思.<br>
+  以一个#开头的行是注释行.<br>
+  <br>
+  比如:<br>
+  # 这是一行注释.<br>
+  <br>
+  注释也可以出现在一个命令语句的后面.<br>
+  echo "A comment will follow." # 这里可以添加注释.<br>
+  <br>
+  注释前面也可以有空白字符(比如,空格和TAB).<br>
+  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp#注意这个注释行的开头是八个空格.<br>
+  <br>
+  <br>
+  在同一行中,命令不会跟在一个注释的后面.因为这种情况下没有办法分辨注释的结尾,命令只能放在同一行的行首.<br>
+  <br>
+  如果反过来的话,Bash不能区分哪里是注释结尾,命令不会执行.<br>
+  <br>
+  问:也就是说只可以 命令+注释, 不可以 注释+命令?<br>
+  是的.<br>
+  <br>
+  问:运行时注释显示不出来啊?<br>
+  注释只是写给看程序代码的程序员看的,并不会参与程序的运行,写不写注释程序运行效果都是一样的.<br>
+  <br>
+  问:注释可以是中文或英文吧?<br>
+  可以.注释只是写给看程序代码的程序员看的.任何字符都可以.<br>
+  <br>
+  <br>
+  #注释还有一些例外.<br>
+  echo "The # here does not begin a comment."<br>
+  echo 'The # here does not begin a comment.'<br>
+  echo The \# here does not begin a comment.<br>
+  echo The # here begins a comment.<br>
+  echo ${PATH#*:}       # 前面的#是参数代换,不是注释.<br>
+  echo $((2#101011))    # 基本转换,不是注释.<br>
+  <br>
+  在某些情况下,#并不是注释开始的意思.<br>
+  <br>
+  echo "The # here does not begin a comment."<br>
+  echo 'The # here does not begin a comment.'<br>
+  引号的引用,#将被解释为本身的意思#,最终echo会输出#.<br>
+  在这里#不是注释的开头.<br>
+  <br>
+  ${var#Pattern}, ${var##Pattern}<br>
+  删除从$var前端开始的最短或最长匹配$Pattern的字符串。<br>
+  2#101011<br>
+  的意思是,把101011从二进制转换为十进制<br>
+  在这里#同样不是注释的开头.(有关${var#Pattern}和2#101011的知识以后再讲)<br>
+  <br>
+  ******************************<br>
+  <br>
+  下面讲分号;<br>
+  ;是命令分隔符,它允许在同一行里有两个或更多的命令.<br>
+  <br>
+  比如:<br>
+  echo a; echo b; ls<br>
+  <br>
+  ******************************<br>
+  <br>
+  ."点"命令.这是一个bash的内建命令.<br>
+  用它可以在运行时把一个文件的内容包含到脚本中.<br>
+  点命令和C里的#include预编译命令很像.<br>
+  <br>
+  比如,<br>
+  #! /bin/sh<br>
+  . /etc/profile<br>
+  echo $TERM<br>
+  exit<br>
+  <br>
+  这个脚本在运行时,就相当于把profile文件的内容复制到这个文件里代替<br>
+  . /etc/profile<br>
+  那一行,然后继续执行.<br>
+  <br>
+  点同样可以作为一个文件名的组成部分.<br>
+  当点为前缀时,该文件变成了隐藏文件.这种隐藏文件ls是不会显示出来的.(除非加了-a)<br>
+  在第一节的时候就讲过,ls -a会显示以点开头的隐藏文件.<br>
+  <br>
+  在资源管理里不能直接重命名前面带点的,需要在终端用cp/mv等命令来重命名.<br>
+  <br>
+  比如,<br>
+  mv /mnt/mmc/upgrade.bin /mnt/mmc/.upgrade.bin<br>
+  然后打开资源管理器->存储卡,你会发现upgrade.bin文件消失了<br>
+  Windows不支持这种隐藏文件的方法,因此在Windows上会显示出来<br>
+  <br>
+  问:那现在升级的话可行吗<br>
+  不行的,因为文件名变了,需要改回来才行.<br>
+  <br>
+  ******************************<br>
+  <br>
+  下面讲"双引号和'单引号.<br>
+  引号中间引用的东西会被当作一个整体来处理,不会被空格/TAB等字符分割.比如:<br>
+  echo "Hello; echo a"<br>
+  会显示Hello; echo a, 分号不会被当作命令分隔符.<br>
+  <br>
+  双引号和单引号的区别是,双引号内$等字符会被翻译成特殊含义,而单引号则不会.<br>
+  <br>
+  比如:<br>
+  hello="Hello World"<br>
+  echo "$hello"<br>
+  echo '$hello'<br>
+  <br>
+  第一个"$hello"会输出Hello World,<br>
+  而第二个'$hello'会输出$hello.<br>
+  因此,双引号被称为部分引用,单引号被称为完全引用.<br>
+  <br>
+  ******************************<br>
+  <br>
+  \[后斜杠]是转义符.它用来把有特殊含义的字符转换为它本身的意思.<br>
+  比如,echo "\$",在这里就会输出$,$被转义为本身含义.<br>
+  如果想输出\字符本身的话,可以用\\: echo "\\"<br>
+  <br>
+  ******************************<br>
+  <br>
+  /[前斜杠]是文件路径的分隔符.比如,/mnt/mmc<br>
+  <br>
+  ******************************<br>
+  <br>
+  `[反引号]:命令替换.<br>
+  `command`结构使字符`引住的命令(command)执行结果能赋值给一个变量.<br>
+  <br>
+  比如,<br>
+  a="`ls`"<br>
+  然后echo $a显示a变量的值,你会发现a的值就是ls的结果<br>
+  <br>
+  注意,命令替换是反引号,不是单引号.<br>
+  <br>
+  在PC键盘上,是输入区最左上角的键,esc的下面和TAB的上面.<br>
+  <br>
+  `在机子中可以用手写的符号模式打出.<br>
+  1500也可以切换到符号键盘,用键盘按shift+最上面那行,然后底下就出来候选字符,用下键切换到,数字键选择.第四个.<br>
+  <br>
+  `ls` 等同于 $(ls), ``和$()有一样的作用.不同是,$()可以嵌套使用.<br>
+  <br>
+  比如 a=$(dirname $(pwd))<br>
+  <br>
+  ******************************<br>
+  <br>
+  :[冒号]空命令.<br>
+  这个命令意思是空操作(即什么操作也不做).<br>
+  冒号":" 命令是Bash自身内建的,它的退出状态码是真(即0).[注:shell中真用数字0表示].<br>
+  <br>
+  冒号在循环中很有用,用冒号作为循环的条件可以生成一个死循环,因为冒号命令的返回值永远是真.<br>
+  <br>
+  比如,<br>
+  while :; do<br>
+    echo "Hello"<br>
+  done<br>
+  会生成一个输出Hello的死循环.循环部分以后讲.<br>
+  <br>
+  因为冒号没有任何作用,所以用冒号+重定向可以创建长度为0的文件.重定向相关内容在本节课后面会讲.<br>
+  <br>
+  : > file1<br>
+  <br>
+  file1的内容会被清空或是创建,创建大小为0的空文件.<br>
+  <br>
+  如果用<br>
+  : >> file2<br>
+  file2如果存在,则什么也不会发生.否则会创建大小为0的file2空文件.<br>
+  <br>
+  ******************************<br>
+  <br>
+  ![感叹号]取反一个测试结果或退出状态.<br>
+  <br>
+  例如, !=为不等于.<br>
+  感叹号也可以用于间接变量引用.<br>
+  <br>
+  例子:<br>
+  #! /bin/sh<br>
+  hello="Hello World"<br>
+  tmp=hello<br>
+  echo ${!tmp}<br>
+  exit<br>
+  <br>
+  将会输出Hello World.<br>
+  <br>
+  ${!tmp}代表着,假设tmp变量的内容为一个变量名,输出该变量的值.<br>
+  在这个例子中,${!tmp}首先读取tmp变量的内容:hello,然后读取hello变量的内容:Hello World,最终的结果就是${!tmp} = Hello World.<br>
+  <br>
+  ******************************<br>
+  <br>
+  *[星号]通配符.<br>
+  星号字符是用于匹配文件名扩展的一个通配符.<br>
+  它自动匹配给定的目录下的每一个文件。<br>
+  echo *<br>
+  会显示出当前目录下的所有文件<br>
+  <br>
+  还有,<br>
+  cp /bin/* /tmp/bin/<br>
+  会把/bin文件夹下的所有文件复制到/tmp/bin文件夹下(如果存在/tmp/bin文件夹).<br>
+  <br>
+  *在算术运算中代表乘号./代表除号.<br>
+  <br>
+  ******************************<br>
+  <br>
+  ?测试操作符.在一些表达式中，问号表示一个条件测试.<br>
+  在双括号结构里,问号表示C风格的三元操作符.<br>
+  在参数替换表达式里,问号测试一个变量是否被设置了值.<br>
+  这些内容以后会讲到.<br>
+  <br>
+  ******************************<br>
+  <br>
+  $变量替换 (引用一个变量的内容).<br>
+  这个在上节课讲过,作用是输出变量的值.<br>
+  <br>
+  其它用法:<br>
+  <br>
+  <br>
+  ${}参数替换.<br>
+  <br>
+  <br>
+  $*, $@ 位置参数.<br>
+  <br>
+  有一种特殊的变量,叫位置参数.<br>
+  在运行一个脚本(或函数,这个以后讲)的时候,可以给脚本几个变量<br>
+  <br>
+  比如,假设有个脚本叫a.sh,<br>
+  a.sh 1 2 3<br>
+  在a.sh运行过程中,$1 / $2 / $3的变量就分别为1 / 2 / 3<br>
+  <br>
+  $*和$@则是所有位置变量,在这里就是`1 2 3'<br>
+  <br>
+  a.sh:<br>
+  #! /bin/sh<br>
+  echo "\$1:$1"<br>
+  echo "\$*:$*"<br>
+  exit<br>
+  <br>
+  然后,运行 a.sh 1 2 3 会输出:<br>
+  $1:1<br>
+  $*:1 2 3<br>
+  <br>
+  <br>
+  $? 保存退出码值的变量.变量$?保存了一个命令,一个函数,或一个脚本的退出状态码的值.<br>
+  <br>
+  比如,a.sh:<br>
+  #! /bin/sh<br>
+  exit 12<br>
+  <br>
+  然后在终端:<br>
+  # a.sh<br>
+  # echo $?<br>
+  12<br>
+  <br>
+  a.sh的返回值为12.要注意的是,返回值的范围是0-255.超出这个范围会溢出.<br>
+  <br>
+  ******************************<br>
+  <br>
+  下面讲重定向.<br>
+  <br>
+  shell开始的时候,默认打开的有三个文件:标准输入/标准输出/错误输出.<br>
+  标准输入/标准输出/错误输出在机子终端中默认是/dev/tty.<br>
+  你可以把标准输入/标准输出/错误输出重定向到文件.<br>
+  <br>
+  &lt;用来重定向标准输入.<br>
+  如果a.sh &lt; /mnt/mmc/a,那么a.sh所有需要输入的地方都会从/mnt/mmc/a文件里来读取,而不会再要求从终端输入.<br>
+  <br>
+  &gt;用来重定向标准输出.<br>
+  如果a.sh &gt; /mnt/mmc/a,那么a.sh所有的输出(echo等)都会输出到/mnt/mmc/a文件,而不再会显示到终端.<br>
+  <br>
+  2&gt;用来错误输出.<br>
+  如果a.sh &gt; /mnt/mmc/a,那么a.sh所有的错误输出(比如语法错误消息)都会输出到/mnt/mmc/a文件,而不再会显示到终端.<br>
+  <br>
+  这三个可以混合使用,比如<br>
+  a.sh &lt;/1.txt &gt;2.txt 2&gt;3.txt<br>
+  <br>
+  &>可以同时重定向标准输出和错误输出.<br>
+  <br>
+  >>用来追加重定向文件.<br>
+  如果只用>的话,那么每次使用输出到的文件就会被清空,然后输出到那个文件.<br>
+  而>>是追加,文件不会被清空,输出会加到文件末尾.<br>
+  <br>
+  ******************************<br>
+  <br>
+  |管道操作符.<br>
+  它的作用是,把一个命令的标准输出作为另一个命令的标准输入.<br>
+  <br>
+  比如,<br>
+  ls | busybox grep a<br>
+  会把ls的输出作为输入传递给busybox grep处理,然后grep进行筛选,选出其中含有a的行输出.<br>
+  grep文本处理工具使用方法以后会讲.<br>
+  <br>
+  |这个符号要在手写-符号里打出来.<br>
+  <br>
+  ******************************<br>
+  <br>
+  &有个作用是后台运行.<br>
+  <br>
+  比如,<br>
+  sleep 10s &<br>
+  会在后台执行sleep 10s的命令,在sleep的十秒内你可以继续运行别的命令.<br>
+  <br>
+  ******************************<br>
+  <br>
+  -:命令的参数以它开始.比如,ls -a.<br>
+  <br>
+  <br>
+  - 也代表着标准输入.<br>
+  <br>
+  比如,<br>
+  busybox grep a -<br>
+  在运行后grep会处理标准输入,等待用户输入,从输入中筛选包含a的行输出.<br>
+  <br>
+  # grep a -<br>
+  abcd<br>
+  abcd<br>
+  bcd<br>
+  <br>
+  abcd 和 bcd 那两行就是输入.<br>
+  grep返回的只有abcd,bcd那行因为没有a字符,因此不会被输出.<br>
+  <br>
+  <br>
+  在cd命令中,-的意思是先前的工作目录.<br>
+  <br>
+  比如:<br>
+  # cd /mnt/mmc&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp#进入/mnt/mmc<br>
+  #&nbspcd&nbsp/mnt/UsrDisk&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp#进入/mnt/UsrDisk<br>
+  #&nbsppwd&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp#显示当前目录<br>
+  /mnt/UsrDisk&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp#命令输出<br>
+  #&nbspcd&nbsp-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp#返回以前的工作目录<br>
+  #&nbsppwd&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp#显示当前目录<br>
+  /mnt/mmc&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp#命令输出<br>
+  <br>
+  <br>
+  -在算术运算中是负号或减号.+是加号.<br>
+  <br>
+  ******************************<br>
+  <br>
+  =是赋值运算符,在变量赋值使用.比如<br>
+  hello="Hello World"<br>
+  <br>
+  ******************************<br>
+  <br>
+  ~[波浪号]主目录或称为家目录.它与变量$HOME是一致的.在机子中是根目录/.<br>
+  <br>
+  ~+ 当前工作目录.它与变量$PWD是一致的.<br>
+  <br>
+  ~- 先前的工作目录.它与外部变量$OLDPWD是一致的.与cd -功能相同.<br>
+  <br>
+  ~ / ~+ / ~- 可用于cd和ls等,而-只能用于cd.<br>
+  <br>
+  ******************************<br>
+  <br>
+  下面讲最后一个.空白.<br>
+  空白用做函数的分隔符,分隔命令或变量.空白是由空格,制表(TAB),空行,或是由上述的组合造成的.比如,ls -a.<br>
+  注意: 在某些情况下,比如变量赋值,空白是不被允许的,它会导致语法错误.<br>
+  比如: hello = "Hello World" 是错误的, hello="Hello World" 正确.<br>
+  <br>
+  ******************************<br>
+  <br>
+  下课! 起立----<IMG src=./04.files/01.gif><br>
+ </body>
+</html>

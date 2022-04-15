@@ -1,0 +1,233 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+ <HEAD>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <TITLE>昊哥的NP1500私房菜</TITLE>
+  <META NAME="Generator" CONTENT="EditPlus">
+  <META NAME="Author" CONTENT="">
+  <META NAME="Keywords" CONTENT="">
+  <META NAME="Description" CONTENT="">
+ </HEAD>
+ <BODY>
+  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+  昊哥的NP1500私房菜<br>
+  <br>
+  2012-02-06<br><br>
+  第二讲 - shell和常用命令<br>
+  <br>
+  <br>
+  <br>
+  启动终端后,终端会自动启动shell.<br>
+  <IMG src="./02.files/01.png"><br>
+  <br>
+  shell或Bash是命令解释器,它可以把你输入的命令翻译成机子要实际运行的程序或动作.<br>
+  <IMG src="./02.files/38.png">那个#就代表着shell已启动,等待命令输入.<br>
+  <br>
+  <br>
+  <br>
+  下面,讲shell的常用命令,也是新手必须要掌握的命令.<br>
+  <br>
+  我们最常用的命令有:<br>
+  ls cd pwd cat cp mv rm rmdir mkdir chmod ln echo clear reboot<br>
+  <br>
+  <br>
+  先说ls(list)..<br>
+  ls的功能是,显示当前目录下的文件/文件夹.<br>
+  <IMG src="./02.files/02.png"><br>
+  <br>
+  ls命令会以不同的颜色来显示不同种类的文件:<br>
+  <IMG src="./02.files/39.png">文件夹显示为蓝色;<br>
+  <IMG src="./02.files/43.png">可执行文件显示为绿色;<br>
+  <IMG src="./02.files/40.png">普通文件显示的颜色与终端的默认颜色一样,比如我的终端是黑底绿字,普通文件的颜色也是黑底绿字,这里与可执行文件重复了;<br>
+  <IMG src="./02.files/41.png">天蓝色代表着链接文件,链接是一种类似于快捷方式的文件,它链接着一个文件或是文件夹;<br>
+  <IMG src="./02.files/03.png">还有一种颜色是紫色,它代表着设备文件,比如,各种磁盘分区等,在Linux里都以设备文件的形式出现.<br>
+  <br>
+  ls命令有很多的选项,可以通过 ls --help 或是 help ls 来查看:<br>
+  <IMG src="./02.files/04.png"><br>
+  这些选项中,常用的有-1,-a,-l,-h,-R.<br>
+  <br>
+  -1代表着每一行只显示一个文件/文件夹:<br>
+  <IMG src="./02.files/05.png"><br>
+  <br>
+  -a的作用是显示以.开头的隐藏文件.<br>
+  Linux系统中,文件名以.开头代表着该文件是隐藏文件.<br>
+  <IMG src="./02.files/10.png"><br>
+  <IMG src="./02.files/42.png">这些就是隐藏文件.<br>
+  <br>
+  -l选项会输出很长的列表格式,显示出文件的详细信息:<br>
+  <IMG src="./02.files/07.png"><br>
+  输出的有文件的权限信息,属于的用户,文件大小和修改日期等.<br>
+  你会发现,在这里显示的文件大小是以字节形式显示的,这并不方便<br>
+  <br>
+  这时候就用到-h选项了.<br>
+  -h的作用是,将文件大小以可读的形式输出(用k/M/G的单位输出),比如,1k,243M,2G:<br>
+  <IMG src="./02.files/08.png"><br>
+  -h需要配合-l来使用.<br>
+  <br>
+  最后一个常用的是-R,-R将以递归的方法搜索当前目录下的所有子目录,并显示:<br>
+  <IMG src="./02.files/09.png"><br>
+  <br>
+  <br>
+  然后讲cd(change directory)命令.<br>
+  cd的功能是,进入指定的目录.<br>
+  <br>
+  问:不是和dos差不多嘛？<br>
+  差不多,但也有一些不同.<br>
+  Linux的根目录是/,不像Windows有C:/D:/E:什么的.<br>
+  而且,Linux每一级目录的分隔符号是/,而不是Windows的\,比如/mnt/mmc:<br>
+  <IMG src="./02.files/11.png"><br>
+  在ls下看到的目录可以用cd进入,TAB自动补全功能也是可用的.<br>
+  cd进入目录后,可以用pwd来显示现在所在路径.<br>
+  <br>
+  <br>
+  然后讲cat命令.<br>
+  cat的功能是,显示一个文件的内容.<br>
+  <br>
+  cat main.c<br>
+  将会打印出main.c文件的内容:<br>
+  <IMG src="./02.files/12.png"><br>
+  <br>
+  二进制的程序文件也可以显示(如果你想的话).不过会输出乱码:<br>
+  <IMG src="./02.files/13.png"><br>
+  <br>
+  问:咋跟记事本一样？<br>
+  是的,功能都是显示文件的内容,记事本可以编辑,但cat只是显示.<br>
+  <br>
+  <br>
+  然后讲cp命令.cp,全称copy,拷贝,也叫复制.<br>
+  cp可以用来复制一个文件或是目录,也可以在复制的同时改名.<br>
+  <br>
+  cp file1 file2<br>
+  可以将file1复制为file2,比如:<br>
+  cp /main.c /tmp/<br>
+  会把根目录/下的main.c复制到/tmp目录下:<br>
+  <IMG src="./02.files/14.png"><br>
+  <br>
+  也可以在复制的同时改名.<br>
+  cp /main.c /tmp/test.c<br>
+  会把根目录下的main.c复制到/tmp目录下,并改名为test.c:<br>
+  <IMG src="./02.files/15.png"><br>
+  <br>
+  cp的常用选项是-r.<br>
+  -r将会以递归的方法来复制整个目录.<br>
+  <br>
+  cp -r /etc /mnt/mmc<br>
+  将会把根目录下的etc文件夹整个复制到存储卡里:<br>
+  <IMG src="./02.files/16.png"><br>
+  <br>
+  cp有一个选项是-i,作用是如果有重复文件时,会询问是否覆盖:<br>
+  <IMG src="./02.files/17.png"><br>
+  <br>
+  <br>
+  然后是mv命令.mv,全称move,剪切.<br>
+  mv命令可以用来移动文件/目录,也可以用来重命名.<br>
+  mv的用法与cp基本上相同,差别就是cp会保留原文件,而mv会删除源文件,因此mv也被用来重命名文件.<br>
+  <br>
+  mv /mnt/mmc/etc /mnt/mmc/test<br>
+  将会把存储卡下的etc文件夹重命名为test:<br>
+  <IMG src="./02.files/18.png"><br>
+  <br>
+  用mv来重命名/移动目录是不需要加-r选项的.<br>
+  <br>
+  mv同样有一个选项是-i,如果有重复文件时,会询问是否覆盖:<br>
+  <IMG src="./02.files/19.png"><br>
+  <br>
+  <br>
+  然后讲rm.rm,全称remove,作用是删除文件/目录:<br>
+  <IMG src="./02.files/20.png"><br>
+  <br>
+  rm后可加多个文件,会同时删除那些文件:<br>
+  <IMG src="./02.files/21.png"><br>
+  <br>
+  类似于cp,rm有一个选项是-r,用于删除目录:<br>
+  <IMG src="./02.files/22.png"><br>
+  <br>
+  如果不加-r,将会显示错误:<br>
+  <IMG src="./02.files/23.png"><br>
+  <br>
+  rm同样也有一个选项是-i,在删除前会进行确认:<br>
+  <IMG src="./02.files/24.png"><br>
+  <br>
+  <br>
+  有一个类似于rm的命令是rmdir(remove directory),用于删除空目录.<br>
+  如果那个目录下有文件的话,rmdir将会报错:<br>
+  <IMG src="./02.files/25.png"><br>
+  <br>
+  <br>
+  mkdir(make directory)的功能与rmdir相反,mkdir用于创建一个目录.<br>
+  mkdir abc<br>
+  将会创建一个名为abc的目录:<br>
+  <IMG src="./02.files/26.png"><br>
+  <br>
+  mkdir后面也可以跟着多个名字,会同时创建那些目录:<br>
+  <IMG src="./02.files/27.png"><br>
+  <br>
+  <br>
+  chmod(change mode)命令用于修改文件权限.<br>
+  <br>
+  文件权限有可读/可写/可执行,符号分别是r/w/x:<br>
+  <IMG src="./02.files/28.png"><br>
+  <br>
+  文件的权限分为三组,三组rwx分别代表着文件拥有者,文件所属的用户组和其他用户的权限,chmod可以修改那些权限.<br>
+  比如,现在main.c的权限是rw-r--r--,通过chmod 777可以修改为rwxrwxrwx.<br>
+  <IMG src="./02.files/29.png"><br>
+  <br>
+  chmod 777里的7=4+2+1,4代表可读r,2代表可写w,1代表可执行x,三组7分别设置那三种用户的权限:<br>
+  <IMG src="./02.files/30.png"><br>
+  <br>
+  <br>
+  然后讲ln(link)命令.ln的功能是创建一个链接文件,类似快捷方式的作用.<br>
+  注意:FAT/FAT32/NTFS文件系统不支持ln链接(Win7的NTFS支持).<br>
+  <br>
+  链接文件分为硬链接和软链接.<br>
+  创建的如果是硬链接,那么即使原文件被删掉了,连接出的文件里还保存着原文件的内容,就类似于复制.<br>
+  <br>
+  与复制不同的是,在原文件修改时它的内容也会自动修改.<br>
+  但是硬链接只能创建于同一个文件系统上,不能跨文件系统,比如系统根目录/与存储卡/mnt/mmc之间就不能创建硬链接.<br>
+  <br>
+  还有一种连接是软链接,它没有文件系统的限制,所以最常用的还是软链接.<br>
+  软链接才是真正类似于快捷方式的东西.当源文件被删除后,它也会失去作用,变成一个断掉的链接.但是它可以跨文件系统.<br>
+  <br>
+  ln file1 file2<br>
+  将会创建file1的硬链接文件file2.<br>
+  <br>
+  加上-s创建的就是软链接了.<br>
+  <br>
+  比如,在当前目录下:<br>
+  ln -s /mnt/UsrDisk/Noah-IDE Noah-IDE<br>
+  将会创建一个到/mnt/UsrDisk/Noah-IDE的连接,ls Noah-IDE就相当于ls /mnt/UsrDisk/Noah-IDE:<br>
+  <IMG src="./02.files/31.png"><br>
+  <br>
+  ln还有两个常用参数是-n和-f.<br>
+  -n代表着如果有重名文件不覆盖,-f则是覆盖:<br>
+  <IMG src="./02.files/32.png"><br>
+  <br>
+  <br>
+  下面讲一下echo.<br>
+  echo用来显示字符,把字符打印到屏幕上.<br>
+  echo 'Hello World!' 将会在屏幕上打印字符 Hello World!<br>
+  <IMG src="./02.files/33.png"><br>
+  <br>
+  如果想看echo的帮助,echo --help是不行的,要用help echo,因为echo --help将会打印--help:<br>
+  <IMG src="./02.files/34.png"><br>
+  <br>
+  echo在显示完字符后会换行,加上-n则不会换行:<br>
+  <IMG src="./02.files/35.png"><br>
+  <br>
+  echo -e可以开启对转义序列的支持,转义序列可以设定输出字的格式(颜色等).<br>
+  转义序列是以\e或\E或\033开头的格式控制字符串.<br>
+  <br>
+  echo -e '\e[33;41mHello World!\E[0m' 将会输出红底黄字的Hello World!<br>
+  <IMG src="./02.files/36.png"><br>
+  \e[33;41m和\e[0m就是转义序列.<br>
+  33的第一个3代表前景色,第二个3代表黄色,41的第一个4代表背景色,第二个1代表红色,\e[0m代表清除所有属性.<br>
+  关于转义序列的详细用法,推荐唯吾无为的<A href=http://club.noahedu.com/viewthread.php?tid=118019&highlight=%D7%AA%D2%E5%D0%F2%C1%D0>转义序列笔记</A>.<br>
+  <br>
+  <br>
+  clear命令用来清除屏幕:<br>
+  <IMG src="./02.files/37.png"><br>
+  <br>
+  <br>
+  最后再加一个reboot命令.reboot:重启.这个不用多介绍了吧?<IMG src="./02.files/43.gif"><br>
+ </BODY>
+</HTML>
