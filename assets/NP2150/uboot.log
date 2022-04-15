@@ -1,0 +1,15 @@
+NP2150# printenv
+bootargs=mem=64M console=ttyS0,115200n8 ip=off  ubi.mtd=3 root=ubi0:rootfs  rootfstype=ubifs rw
+bootcmd=nand read 0x80600000 0x500000 0x300000;bootm
+bootdelay=1
+baudrate=115200
+loads_echo=1
+ethaddr=00:2a:cc:2a:af:fe
+autoload=n
+bootfile="uImage"
+stdin=serial
+stdout=lcd
+stderr=lcd
+
+Environment size: 280/524283 bytes
+NP2150#

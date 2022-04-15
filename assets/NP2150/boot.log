@@ -1,0 +1,356 @@
+
+
+NAND Secondary Program Loader
+
+Starting U-Boot ...
+start_pbat_adc ***
+======================= 2536
+
+
+U-Boot 1.1.6 (Jun 30 2009 - 15:41:36)
+
+Board: Ingenic PAVO (CPU Speed 336 MHz)
+DRAM:  64 MB
+Flash:  0 kB
+NAND:2048 MiB
+*** Warning - bad CRC or NAND, using default environment
+
+LCD Select:IO_D0=0 IO_D1=0
+LCD Type:LCD_AT043TN24
+The BPP is 32
+PixClock:9333333 LcdClock:28000000
+In:    serial
+Out:   lcd
+Err:   lcd
+no menu keypad and right keypad is on!
+Hit any key to stop autoboot:  0
+
+NAND read: device 0 offset 0x500000, size 0x300000
+correctable error counts is 1
+correctable error counts is 1
+correctable error counts is 1
+correctable error counts is 1
+correctable error counts is 1
+correctable error counts is 1
+correctable error counts is 1
+ 3145728 bytes read: OK
+## Booting image at 80600000 ...
+   Image Name:   Linux-2.6.24.3-ge6f338fc-dirty
+   Image Type:   MIPS Linux Kernel Image (gzip compressed)
+   Data Size:    1673913 Bytes =  1.6 MB
+   Load Address: 80010000
+   Entry Point:  802e4d90
+   Verifying Checksum ... OK
+   Uncompressing Kernel Image ... OK
+
+Starting kernel ...
+
+Linux version 2.6.24.3-ge6f338fc-dirty (xiechen@xiechen-xxjxt) (gcc version 4.1.2) #173 PREEMPT Mon Jul 13 10:14:41 CST 2009
+CPU revision is: 0ad0024f (Ingenic JZRISC)
+CPU clock: 336MHz, System clock: 112MHz, Peripheral clock: 112MHz, Memory clock: 112MHz
+Determined physical RAM map:
+ memory: 04000000 @ 00000000 (usable)
+User-defined physical RAM map:
+ memory: 04000000 @ 00000000 (usable)
+Zone PFN ranges:
+  Normal          0 ->    16384
+Movable zone start PFN for each node
+early_node_map[1] active PFN ranges
+    0:        0 ->    16384
+Built 1 zonelists in Zone order, mobility grouping on.  Total pages: 16256
+Kernel command line: mem=64M console=ttyS0,115200n8 ip=off  ubi.mtd=3 root=ubi0:rootfs  rootfstype=ubifs rw
+Primary instruction cache 16kB, VIPT, 4-way, linesize 32 bytes.
+Primary data cache 16kB, 4-way, VIPT, no aliases, linesize 32 bytes
+Synthesized clear page handler (25 instructions).
+Synthesized copy page handler (44 instructions).
+Synthesized TLB refill handler (20 instructions).
+Synthesized TLB load handler fastpath (32 instructions).
+Synthesized TLB store handler fastpath (32 instructions).
+Synthesized TLB modify handler fastpath (31 instructions).
+PID hash table entries: 256 (order: 8, 1024 bytes)
+Console: colour dummy device 80x25
+console [ttyS0] enabled
+Dentry cache hash table entries: 8192 (order: 3, 32768 bytes)
+Inode-cache hash table entries: 4096 (order: 2, 16384 bytes)
+Memory: 60896k/65536k available (2920k kernel code, 4568k reserved, 631k data, 276k init, 0k highmem)
+Mount-cache hash table entries: 512
+net_namespace: 64 bytes
+NET: Registered protocol family 16
+SCSI subsystem initialized
+usbcore: registered new interface driver usbfs
+usbcore: registered new interface driver hub
+usbcore: registered new device driver usb
+NET: Registered protocol family 2
+Time: jz_clocksource clocksource has been installed.
+IP route cache hash table entries: 1024 (order: 0, 4096 bytes)
+TCP established hash table entries: 2048 (order: 2, 16384 bytes)
+TCP bind hash table entries: 2048 (order: 1, 8192 bytes)
+TCP: Hash tables configured (established 2048 bind 2048)
+TCP reno registered
+Total 4MB memory at 0x3400000 was reserved for IPU
+Power Management for JZ
+io scheduler noop registered
+io scheduler anticipatory registered (default)
+LCD Select:IO_D0=0 IO_D1=0
+LCD Type:LCD_AT043TN24
+LCDC: PixClock:9882352 LcdClock:30545454
+full_data=183, half_data scale=150
+JzSOC 4.3LCD Controller driver 2.03
+Console: switching to colour frame buffer device 60x34
+JzSOC onchip RTC installed !!!
+JzSOC: char device family.
+NP1300 power dected registered 1.20
+bill hell_is_on 000
+Jz generic touch screen driver registered 2.00
+JZ4740 SAR-ADC driver registered
+UDC starting monitor thread
+JZ UDC hotplug driver registered
+Serial: 8250/16550 driver $Revision: 1.1.1.1 $ 2 ports, IRQ sharing disabled
+▒▒▒▒▒▒50: ttyS0 at MMIO 0x0 (irq = 9) is a 16550A
+serial8250: ttyS1 at MMIO 0x0 (irq = 8) is a 16550A
+loop: module loaded
+PPP generic driver version 2.4.2
+PPP Deflate Compression module registered
+PPP BSD Compression module registered
+PPP MPPE Compression module registered
+NET: Registered protocol family 24
+PPPoL2TP kernel driver, V1.0
+pegasus: v0.6.14 (2006/09/27), Pegasus/Pegasus II USB Ethernet driver
+usbcore: registered new interface driver pegasus
+usbcore: registered new interface driver dm9601
+Driver 'sd' needs updating - please use bus_type methods
+Driver 'sr' needs updating - please use bus_type methods
+NAND device: Manufacturer ID: 0xec, Chip ID: 0xd5 (Samsung NAND 2GiB 3,3V 8-bit)
+Scanning device for bad blocks
+Bad eraseblock 2369 at 0x4a0ff000
+Creating 4 MTD partitions on "NAND 2GiB 3,3V 8-bit":
+0x00000000-0x00300000 : "NOAH U-boot partition 0"
+0x00300000-0x00500000 : "NOAH Serial partition 1"
+0x00500000-0x00800000 : "NOAH Kernel partition 2"
+0x00800000-0x80000000 : "NOAH ROOT FS partition 3"
+UBI: physical eraseblock size:   524288 bytes (512 KiB)
+UBI: logical eraseblock size:    516096 bytes
+UBI: smallest flash I/O unit:    4096
+UBI: VID header offset:          4096 (aligned 4096)
+UBI: data offset:                8192
+UBI: attached mtd3 to ubi0
+UBI: MTD device name:            "NOAH ROOT FS partition 3"
+UBI: MTD device size:            2040 MiB
+UBI: number of good PEBs:        4079
+UBI: number of bad PEBs:         1
+UBI: max. allowed volumes:       128
+UBI: wear-leveling threshold:    256
+UBI: number of internal volumes: 1
+UBI: number of user volumes:     7
+UBI: available PEBs:             195
+UBI: total number of reserved PEBs: 3884
+UBI: number of PEBs reserved for bad PEB handling: 40
+UBI: max/mean erase counter: 44/13
+UBI: background thread "ubi_bgt0d" started, PID 150
+jz-ohci jz-ohci.0: JZ OHCI
+jz-ohci jz-ohci.0: new USB bus registered, assigned bus number 1
+jz-ohci jz-ohci.0: irq 3, io mem 0x13030000
+usb usb1: configuration #1 chosen from 1 choice
+hub 1-0:1.0: USB hub found
+hub 1-0:1.0: 2 ports detected
+usb 1-1: new full speed USB device using jz-ohci and address 2
+usb 1-1: configuration #1 chosen from 1 choice
+hub 1-1:1.0: USB hub found
+hub 1-1:1.0: 2 ports detected
+usbcore: registered new interface driver cdc_acm
+drivers/usb/class/cdc-acm.c: v0.25:USB Abstract Control Model driver for USB modems and ISDN adapters
+Initializing USB Mass Storage driver...
+usbcore: registered new interface driver usb-storage
+USB Mass Storage support registered.
+usbcore: registered new interface driver usbserial
+drivers/usb/serial/usb-serial.c: USB Serial support registered for generic
+usbcore: registered new interface driver usbserial_generic
+drivers/usb/serial/usb-serial.c: USB Serial Driver core
+drivers/usb/serial/usb-serial.c: USB Serial support registered for cp2101
+usbcore: registered new interface driver cp2101
+drivers/usb/serial/cp2101.c: Silicon Labs CP2101/CP2102 RS232 serial adaptor driver v0.07
+drivers/usb/serial/usb-serial.c: USB Serial support registered for Edgeport 2 port adapter
+drivers/usb/serial/usb-serial.c: USB Serial support registered for Edgeport 4 port adapter
+drivers/usb/serial/usb-serial.c: USB Serial support registered for Edgeport 8 port adapter
+drivers/usb/serial/usb-serial.c: USB Serial support registered for EPiC device
+usbcore: registered new interface driver io_edgeport
+drivers/usb/serial/io_edgeport.c: Edgeport USB Serial Driver v2.7
+drivers/usb/serial/usb-serial.c: USB Serial support registered for GSM modem (1-port)
+usbcore: registered new interface driver option
+drivers/usb/serial/option.c: USB Driver for GSM modems: v0.7.1
+drivers/usb/serial/usb-serial.c: USB Serial support registered for pl2303
+usbcore: registered new interface driver pl2303
+drivers/usb/serial/pl2303.c: Prolific PL2303 USB to serial adaptor driver
+mice: PS/2 mouse device common for all mice
+ scankbd_init
+input: jzkpd as /devices/virtual/input/input0
+Jz I2C ScanKBD driver load ============ffffffff==========
+JZ SD/MMC card driver registered
+usbcore: registered new interface driver usbhid
+drivers/hid/usbhid/hid-core.c: v2.6:USB HID core driver
+JzSOC On-Chip I2S controller registered (DAC: DMA(play):2/IRQ34,
+ ADC: DMA(record):3/IRQ35)
+TCP cubic registered
+NET: Registered protocol family 1
+NET: Registered protocol family 17
+
+##################jerry###################
+UBIFS: recovery needed
+UBIFS: recovery completed
+UBIFS: mounted UBI device 0, volume 0, name "rootfs"
+UBIFS: file system size:   178569216 bytes (174384 KiB, 170 MiB, 346 LEBs)
+UBIFS: journal size:       10452992 bytes (10208 KiB, 9 MiB, 21 LEBs)
+UBIFS: media format:       3 (latest is 4)
+UBIFS: default compressor: LZO
+UBIFS: reserved for root:  0 bytes (0 KiB)
+VFS: Mounted root (ubifs filesystem).
+Freeing unused kernel memory: 276k freed
+Algorithmics/MIPS FPU Emulator v1.5
+init started: BusyBox v1.10.3 (2008-08-26 09:15:05 HKT)
+starting pid 205, tty '': '/etc/init.d/rcS'
+
+mount: mounting tmpfs on /dev/shm failed: No such file or directory
+
+Starting udevd ...
+udevd[234]: lookup_group: specified group 'floppy' unknown
+
+dosfsck 2.11, 12 Mar 2005, FAT32, LFN
+/dev/ubiblock6: 429 files, 101409/299291 clusters
+
+##################jerry###################
+UBIFS: recovery needed
+UBIFS: recovery completed
+UBIFS: mounted UBI device 0, volume 1, name "Settings"
+UBIFS: file system size:   7225344 bytes (7056 KiB, 6 MiB, 14 LEBs)
+UBIFS: journal size:       4644865 bytes (4536 KiB, 4 MiB, 8 LEBs)
+UBIFS: media format:       3 (latest is 4)
+UBIFS: default compressor: LZO
+UBIFS: reserved for root:  0 bytes (0 KiB)
+
+##################jerry###################
+UBIFS: mounted UBI device 0, volume 2, name "ProgFS"
+UBIFS: mounted read-only
+UBIFS: file system size:   190955520 bytes (186480 KiB, 182 MiB, 370 LEBs)
+UBIFS: journal size:       10452992 bytes (10208 KiB, 9 MiB, 21 LEBs)
+UBIFS: media format:       3 (latest is 4)
+UBIFS: default compressor: LZO
+UBIFS: reserved for root:  0 bytes (0 KiB)
+
+##################jerry###################
+UBIFS: mounted UBI device 0, volume 3, name "Data"
+UBIFS: mounted read-only
+UBIFS: file system size:   325140480 bytes (317520 KiB, 310 MiB, 630 LEBs)
+UBIFS: journal size:       10452992 bytes (10208 KiB, 9 MiB, 21 LEBs)
+UBIFS: media format:       3 (latest is 4)
+UBIFS: default compressor: LZO
+UBIFS: reserved for root:  0 bytes (0 KiB)
+hwclock: settimeofday() failed: Invalid argument
+
+JZ4740 USB Device Controller
+version: 13-Mar-2008
+ gadget: NP2150 USB Storage Device, version: 7 August 2007
+ gadget: Number of LUNs=1
+g_file_storage gadget-lun0: ro=1, file: /etc/backing_file
+/etc/init.d/rcS: SCSI_DISK: command not found
+eject: can't open '/dev/sr0': No such file or directory
+
+ifconfig: SIOCGIFFLAGS: No such device
+ifconfig: SIOCGIFFLAGS: No such device
+ifconfig: SIOCGIFFLAGS: No such device
+
+ln: /var/lib/dpkg/status: File exists
+ln: /var/lib/dpkg/available: File exists
+ln: /var/lib/apt/lists/lists: File exists
+starting pid 378, tty '': '-/bin/sh'
+starting pid 379, tty '': '/bin/nice -n 0 /etc/runOpie'
+process '-/bin/sh' (pid 378) exited. Scheduling for restart.
+starting pid 397, tty '': '-/bin/sh'
+# killall: quicklauncher: no process killed
+Program Builded Time: Jun 28 2016 22:29:21
+
+
+                       ________  ____ ._______________
+           ____ ______ \_____  \/_   ||   ____/\   _  \
+          /    \\____ \ /  ____/ |   ||____  \ /  /_\  \
+         |   |  \  |_> >       \ |   |/       \\  \_/   \
+         |___|  /   __/\_______ \|___/______  / \_____  /
+              \/|__|           \/           \/        \/
+
+
+
+#void do_free_signal(int & fd)#
+not modify of the file :/Settings/locale.conf
+not modify of the file :/Settings/qpe.conf
+*******  case : QT_QWS_NP1000  ****
+open ts device. mod_try=1
+*******  case : QT_QWS_OTHER  ****
+the keyboard is ----------TTY-------------------
+lcd 3.5 arg is 0x35
+lcd 3.5 arg is 0x40
+lcd 3.5 arg is 0x14
+lcd 3.5 arg is 0x14
+full_data=183, half_data scale=200
+#/etc/udev/scripts/udevdresume.sh#
+#/sbin/noah_net_power_manager.sh noah_net_valid#
+#result:0
+#
+-----imemodule constructor completely!!!~
+rmmod: g_file_storage: No such file or directory
+rmmod: jz4740_udc: No such file or directory
+umount: cannot forcibly umount /mnt/UsrDisk: Invalid argument
+------ loadInputMode: libtouch-mode.so , line 70
+----fullpath=/opt/QtPalmtop/plugins/nminputmethod/libtouch-mode.so result=0x       0
+++++++++ show touch-mode widget
+sh: /etc/udev/scripts/mmc_test.sh: No such file or directory
+ #void touchModeFrame::slotMenuClick(int)#1417#id:1#this:716358#
+#static bool NMDevices::SendMessage(NMDevices::NMDevice_ID, int)#3#1#
+#####cable-add####void ServerApplication::usbChange(const QString&)#######
+#kill -23   `fuser  -m /mnt/UsrDisk`;  killall -23  nflash  flash dc dv  sfcplayer gbcplayer nesplayer driller bomberclone mame;killall  -25  ecard ;#
+kill: usage: kill [-s sigspec | -n signum | -sigspec] [pid | job]... or kill -l [sigspec]
+killall: nflash: no process killed
+killall: flash: no process killed
+killall: dc: no process killed
+killall: dv: no process killed
+killall: sfcplayer: no process killed
+killall: gbcplayer: no process killed
+killall: nesplayer: no process killed
+killall: driller: no process killed
+killall: bomberclone: no process killed
+killall: mame: no process killed
+killall: ecard: no process killed
+
+# uname -a
+Linux np2150.noah.com 2.6.24.3-ge6f338fc-dirty #173 PREEMPT Mon Jul 13 10:14:41 CST 2009 mips unknown
+# df -ha
+Filesystem                Size      Used Available Use% Mounted on
+rootfs                  157.4M    149.4M      8.0M  95% /
+ubi0:rootfs             157.4M    149.4M      8.0M  95% /
+/proc                        0         0         0   0% /proc
+sysfs                        0         0         0   0% /sys
+tmpfs                        0         0         0   0% /dev
+none                         0         0         0   0% /proc/bus/usb
+none                         0         0         0   0% /tmp
+ubi0:Settings             3.7M      1.5M      2.2M  39% /mnt/Settings
+ubi0:ProgFS             168.5M    161.5M      7.0M  96% /mnt/ProgFS
+ubi0:Data               288.9M    243.2M     45.7M  84% /mnt/Data
+devpts                       0         0         0   0% /dev/pts
+/dev/ssfdc1               1.1G    396.1M    773.0M  34% /mnt/UsrDisk
+# mount
+rootfs on / type rootfs (rw)
+ubi0:rootfs on / type ubifs (rw)
+/proc on /proc type proc (rw)
+sysfs on /sys type sysfs (rw)
+tmpfs on /dev type tmpfs (rw)
+none on /proc/bus/usb type usbfs (rw)
+none on /tmp type ramfs (rw)
+ubi0:Settings on /mnt/Settings type ubifs (rw)
+ubi0:ProgFS on /mnt/ProgFS type ubifs (ro)
+ubi0:Data on /mnt/Data type ubifs (ro)
+devpts on /dev/pts type devpts (rw)
+/dev/ssfdc1 on /mnt/UsrDisk type vfat (rw,fmask=0022,dmask=0022,codepage=cp936,iocharset=cp936)
+# free
+              total         used         free       shared      buffers
+  Mem:        61244        41912        19332            0         1180
+ Swap:            0            0            0
+Total:        61244        41912        19332
+#
